@@ -1,41 +1,27 @@
 pipeline {
   agent any
-  environment {
-    IMAGE = "portfolio-app"
-  }
+
   stages {
     stage('Checkout') {
       steps {
-        checkout scm
+        git branch: 'main', url: 'https://github.com/ShenLongVansh/portfolio.git'
       }
     }
+
     stage('Build Docker Image') {
       steps {
-        script {
-          def tag = "${env.BUILD_NUMBER}"
-          sh "docker build -t ${IMAGE}:${tag} ."
-        }
+        sh 'docker build -t portfolio-app .'
       }
     }
-    stage('Deploy') {
+
+    stage('Run Container') {
       steps {
-        script {
-          def tag = "${env.BUILD_NUMBER}"
-          // stop old container
-          sh 'docker ps -q -f name=portfolio | xargs -r docker stop || true'
-          sh 'docker ps -aq -f name=portfolio | xargs -r docker rm || true'
-          // run new one
-          sh "docker run -d --name portfolio -p 3000:3000 ${IMAGE}:${tag}"
-        }
+        sh '''
+          docker stop portfolio-app || true
+          docker rm portfolio-app || true
+          docker run -d -p 3000:3000 --name portfolio-app portfolio-app
+        '''
       }
-    }
-  }
-  post {
-    success {
-      echo "✅ Deployment successful! Visit http://<server-ip>:3000"
-    }
-    failure {
-      echo "❌ Build failed. Check Jenkins logs."
     }
   }
 }
