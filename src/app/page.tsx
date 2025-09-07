@@ -123,7 +123,7 @@ export default function Page() {
                   Check out my latest work
                 </h2>
                 <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  I&apos;ve worked on a variety of projects, from simple
+                  I've worked on a variety of projects, from simple
                   websites to complex web applications. Here are a few of my
                   favorites.
                 </p>
@@ -206,7 +206,7 @@ export default function Page() {
                   className="text-blue-500 hover:underline"
                 >I'd love to chat!
                 </Link>{" "}
-                and I&apos;ll respond whenever I can. I will ignore all
+                and I'll respond whenever I can. I will ignore all
                 soliciting.
               </p>
             </div>
