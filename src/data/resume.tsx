@@ -80,7 +80,7 @@ summary:
  projects: [
     {
       title: "Automated CI/CD Pipeline for This Portfolio",
-      href: "",
+      href: "https://github.com/ShenLongVansh/portfolio",
       dates: "Sepetember 2025", 
       active: true,
       description:
