@@ -65,13 +65,14 @@ summary:
       end: "March 2025", 
       description:
         "Developed and delivered full-stack projects using the MERN stack for multiple clients, meeting all deadlines. My role extended to operations, where I configured hosting environments for live applications. I also managed all team source code using Git-based version control and collaborated with cross-functional teams to enhance workflow efficiency.",
-    },
+    }, 
   ],
   education: [
     {
       school: "Roorkee Institute of Technology",
-      href: "https://uwaterloo.ca",
       degree: "Bachelor of Technology in Computer Science & Engineering (BTech CSE)",
+      badges: ["Undergrad"],
+      href: "https://ritroorkee.com/",
       logoUrl: "/rit.png",
       start: "2021",
       end: "2025",
