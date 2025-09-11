@@ -105,7 +105,7 @@ summary:
       video: "", // will work using s3 bucket in the future
     },
   ],
-  
+
   hackathons: [
     {
       title: "Hackathon 2024 - Be a tech geek.",
@@ -123,7 +123,8 @@ summary:
         },]
     },
     
-    {
+    { 
+      // triggering new build
       title: "NO ESCAPE CTF 2022",
       dates: "November 25th - 26th, 2022",
       location: "RIT Roorkee",
