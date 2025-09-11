@@ -35,7 +35,6 @@ jobs:
           key: ${{ secrets.DO_SSH_PRIVATE_KEY }}
           port: 22
           script: |
-          
             docker stop portfolio || true
             docker rm portfolio || true
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/portfolio:latest
