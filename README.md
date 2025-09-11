@@ -1,4 +1,4 @@
-This repository contains the source code for my personal portfolio website, but it also serves a second, more important purpose: **it is the core application for my hands-on CI/CD automation project. **
+This repository contains the source code for my personal portfolio website, but it also serves a second, more important purpose: **it is the core application for my hands-on CI/CD automation project.**
 
 ### **Live Demo URL [here](https://portfolio-five-lemon-yoqaqn1pf0.vercel.app/)**
 
