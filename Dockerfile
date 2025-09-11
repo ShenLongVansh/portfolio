@@ -1,27 +1,21 @@
-# Stage 1: Build the Next.js app
-FROM node:18 AS builder
+# Use Node.js base image
+FROM node:18
+
+# Set working directory
 WORKDIR /app
 
-# Install deps
+# Copy package.json and install dependencies
 COPY package*.json ./
-RUN npm ci
+RUN npm install
 
-# Copy all code
+# Copy all project files
 COPY . .
 
-# Build Next.js app
+# Build the Next.js app
 RUN npm run build
 
-# Stage 2: Run with production server
-FROM node:18-alpine AS runner
-WORKDIR /app
-
-# Copy necessary files
-COPY --from=builder /app/package*.json ./
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/next.config.js ./next.config.js
-
+# Expose port
 EXPOSE 3000
+
+# Run Next.js in production
 CMD ["npm", "start"]
