@@ -84,28 +84,25 @@ summary:
       href: "https://github.com/ShenLongVansh/portfolio",
       dates: "Sepetember 2025", 
       active: true,
-      description:
-        "Architected a zero-touch CI/CD pipeline for this Next.js site. The pipeline, defined via **Jenkinsfile**, triggers from a **GitHub push**, builds a lightweight multi-stage **Docker-Nginx image**, and automatically deploys the container to production.",
+      description: "Designed and implemented a zero-touch CI/CD pipeline for this Next.js portfolio. The pipeline, defined via GitHub Actions, triggers on push to GitHub, builds a multi-stage Docker image, and deploys the container automatically to a DigitalOcean droplet, exposing the site on port 80.",
       technologies: [
-        "Jenkins",
+        "GitHub Actions",
         "Docker",
-        "Nginx",
         "Git",
         "GitHub",
         "Linux",
         "Next.js",
         "React",
-        "Shell Scripting",
       ],
       links: [
         {
           type: "GitHub",
-          href: "",
+          href: "https://github.com/ShenLongVansh/portfolio",
           icon: <Icons.github className="size-3" />, 
         },
       ],
-      image: "", // See note below
-      video: "", // See note below
+      image: "", // will work using s3 bucket in the future
+      video: "", // will work using s3 bucket in the future
     },
   ],
   hackathons: [
