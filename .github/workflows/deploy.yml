@@ -10,7 +10,7 @@ jobs:
 
     steps:
       # Checkout your repo
-      - name: Checkout repository
+      - name: Checkout the repository
         uses: actions/checkout@v3
 
       # Log in to Docker Hub
