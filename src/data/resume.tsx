@@ -105,6 +105,7 @@ summary:
       video: "", // will work using s3 bucket in the future
     },
   ],
+  
   hackathons: [
     {
       title: "Hackathon 2024 - Be a tech geek.",
@@ -119,6 +120,22 @@ summary:
           title: "Github",
           icon: <Icons.github className="h-4 w-4" />,
           href: "https://github.com/ShenLongVansh/Traffic-Detection-",
+        },]
+    },
+    
+    {
+      title: "NO ESCAPE CTF 2022",
+      dates: "November 25th - 26th, 2022",
+      location: "RIT Roorkee",
+      description:
+        "[1st in College, 17th Worldwide] Secured a top-20 Global and 2nd National ranking in a major international Capture The Flag event on CTFtime.org, solving complex challenges requiring advanced problem-solving, binary manipulation, and forensic tool usage.",
+      image:
+        "./hackathon-CTF.png",
+          links: [
+        {
+          title: "Site",
+          icon: <Icons.globe className="h-4 w-4" />,
+          href: "https://ctftime.org/team/3055",
         },]
     }, ]
 } as const;
