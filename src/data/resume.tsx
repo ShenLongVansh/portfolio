@@ -17,6 +17,7 @@ summary:
     "Docker",
     "Kubernetes",
     "Jenkins",
+    "Terraform",
     "AWS",
     "Linux",
     "Git",
