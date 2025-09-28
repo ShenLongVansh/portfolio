@@ -1,57 +1,53 @@
-name: Deploy to DigitalOcean
+name: Deploy Portfolio to DigitalOcean
 
 on:
   push:
-    branches: [ "main" ]  # triggers only when pushing to main
+    branches: [ "main" ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout your repo
-      - name: Checkout the repository
+      # 1️⃣ Checkout repository
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Log in to Docker Hub
-      - name: Log in to Docker Hub
+      # 2️⃣ Docker login
+      - name: Docker login
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
-      # Build and push Docker image
-      - name: Build and push Docker image
+      # 3️⃣ Build & push portfolio image
+      - name: Build & push portfolio image
         run: |
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/portfolio:latest .
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/portfolio:latest
 
-      # SSH into Droplet and deploy
-      - name: Deploy on Droplet
-        uses: appleboy/ssh-action@v1.0.0
+      # 4️⃣ SSH into droplet and deploy
+      - name: Deploy on DigitalOcean Droplet
+        uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.DO_SSH_HOST }}
           username: ${{ secrets.DO_SSH_USER }}
           key: ${{ secrets.DO_SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            # Stop and remove old containers
-            docker stop datadog-agent || true
-            docker rm datadog-agent || true
-            docker stop portfolio || true
-            docker rm portfolio || true
+            # --- Stop & remove existing containers ---
+            docker stop portfolio datadog-agent || true
+            docker rm portfolio datadog-agent || true
 
-            # Run Datadog Agent first
+            # --- Start Datadog agent first ---
             docker run -d --name datadog-agent \
-              -e DD_API_KEY=${{ secrets.DATADOG_API_KEY }} \
+              -e DD_API_KEY="${{ secrets.DATADOG_API_KEY }}" \
               -e DD_SITE="us5.datadoghq.com" \
               -e DD_LOGS_ENABLED=true \
               -v /var/run/docker.sock:/var/run/docker.sock:ro \
+              -v /var/lib/docker/containers:/var/lib/docker/containers:ro \
               datadog/agent:latest
 
-            # Pull and run your portfolio app
+            # --- Then start portfolio container ---
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/portfolio:latest
             docker run -d -p 80:3000 --name portfolio ${{ secrets.DOCKERHUB_USERNAME }}/portfolio:latest
-
-            # Verify containers are running
-            docker ps
