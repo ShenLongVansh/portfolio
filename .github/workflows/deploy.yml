@@ -38,6 +38,7 @@ jobs:
             # --- Stop & remove existing containers ---
             docker stop portfolio datadog-agent || true
             docker rm portfolio datadog-agent || true
+            docker rmi portfolio
 
             # --- Start Datadog agent first ---
             docker run -d --name datadog-agent \

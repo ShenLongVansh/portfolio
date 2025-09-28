@@ -1,3 +1,4 @@
+**Note:- Working on DataDog and Bugsnag integration. Will update the readme.md accordingly.** 
 
 This repository contains the source code for my personal portfolio website — but more importantly, it also serves as the **live application for my hands-on CI/CD automation project.**
 
