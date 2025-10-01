@@ -103,7 +103,7 @@ summary:
         },
       ],
       image: "", // will work using s3 bucket in the future
-      video: "", // will work using s3 
+      video: "./Automated-Portfolio.webm", // using local for now
     },
   ],
 
