@@ -10,13 +10,12 @@ export const DATA = {
   description:
     "Aspiring DevOps Engineer",
 summary: 
-  "Hello! I'm Vansh Sharma, a Computer Science graduate from Roorkee Institute of Technology, class of 2025. My tech journey began in full-stack web development, where I delivered multiple client projects using React and the MERN stack during my internship. \n \n It was during this internship, while configuring hosting environments and managing deployments, that I discovered my true passion: the complete process that gets code from a developer's machine to a live user, efficiently and reliably.\n\nThis led me to dive deep into DevOps principles. I am currently reinforcing my hands-on skills by completing the **KodeKloud DevOps Engineer Path**. Through this, I am mastering Docker and Jenkins, and building my foundational knowledge in **Kubernetes** and **AWS**. My goal is to leverage my development background to build better automation and contribute to a culture of seamless, continuous delivery.",
+  "Hello! I'm Vansh Sharma, a Computer Science graduate from Roorkee Institute of Technology, class of 2025. My tech journey began in full-stack web development, where I delivered multiple client projects using React and the MERN stack during my internship. \n \n It was during this internship, while configuring hosting environments and managing deployments, that I discovered my true passion: the complete process that gets code from a developer's machine to a live user, efficiently and reliably.\n\nThis led me to dive deep into DevOps principles. I am currently reinforcing my hands-on skills by completing the **KodeKloud DevOps Engineer Path**. Through this, I am mastering **Docker** and **GitHub Actions**, and building my foundational knowledge in **Terraform** and **AWS**. My goal is to leverage my development background to build better automation and contribute to a culture of seamless, continuous delivery.",
 
   avatarUrl: "/me.png",
   skills: [
     "Docker",
-    "Kubernetes",
-    "Jenkins",
+    "GitHub Actions",
     "Terraform",
     "AWS",
     "Linux",
@@ -26,7 +25,6 @@ summary:
     "React",
     "Next.js",
     "Node.js",
-    "MongoDB",
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
@@ -87,11 +85,11 @@ summary:
       active: true,
       description: "Designed and implemented a zero-touch CI/CD pipeline for this Next.js portfolio. The pipeline, defined via GitHub Actions, triggers on push to GitHub, builds a multi-stage Docker image, and deploys the container automatically to a DigitalOcean droplet, exposing the site on port 80.",
       technologies: [
-        "GitHub Actions",
         "Docker",
         "Git",
-        "GitHub",
+        "GitHub Actions",
         "Linux",
+        "Digital Ocean",
         "Next.js",
         "React",
       ],
