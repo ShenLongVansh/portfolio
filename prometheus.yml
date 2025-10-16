@@ -8,4 +8,4 @@ scrape_configs:
     static_configs:
       # 'app:3000' works because Docker Compose creates a network
       # where services can be reached by their name ('app').
-      - targets: ['host.docker.internal:3000']
+      - targets: ['app:3000']
