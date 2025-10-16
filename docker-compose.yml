@@ -3,12 +3,12 @@ version: '3.8'
 
 services:
   # Your Next.js App (as defined in your workflow)
-  app:
-    image: shenlongcodes/portfolio:latest
-    container_name: portfolio-app
-    restart: unless-stopped
-    ports:
-      - "3000:3000"
+  # app:
+  #   image: shenlongcodes/portfolio:latest
+  #   container_name: portfolio-app
+  #   restart: unless-stopped
+  #   ports:
+  #     - "3000:3000"
 
   # The Prometheus Scraper
   prometheus:
