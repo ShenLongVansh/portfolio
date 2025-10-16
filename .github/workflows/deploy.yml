@@ -92,18 +92,10 @@ jobs:
           key: ${{ secrets.DO_SSH_PRIVATE_KEY }}
           port: 22
           script: |
-            # Navigate to your project directory on the Droplet.
-            # IMPORTANT: Make sure this path is correct!
             cd /root/portfolio
-            
-            # Pull the latest changes from your repo to get the new
-            # docker-compose.yml and prometheus.yml files.
             git pull origin main
-            
-            # Use Docker Compose to pull the new version of your app image.
             docker-compose pull app
-            
-            # Start all services (app, prometheus, grafana) in the background.
-            # This command is smart; it will only restart the containers
-            # that have changed, which in this case is just your 'app'.
+            # to remove obsoluete service messing with the droplet
+            docker-compose down
+            # This brings up the new, clean environment
             docker-compose up -d
