@@ -10,14 +10,18 @@ export const DATA = {
   description:
     "Aspiring DevOps Engineer",
 summary: 
-  "Hello! I'm Vansh Sharma, a Computer Science graduate from Roorkee Institute of Technology, class of 2025. My tech journey began in full-stack web development, where I delivered multiple client projects using React and the MERN stack during my internship. \n \n It was during this internship, while configuring hosting environments and managing deployments, that I discovered my true passion: the complete process that gets code from a developer's machine to a live user, efficiently and reliably.\n\nThis led me to dive deep into DevOps principles. I am currently reinforcing my hands-on skills by completing the **KodeKloud DevOps Engineer Path**. Through this, I am mastering **Docker** and **GitHub Actions**, and building my foundational knowledge in **Terraform** and **AWS**. My goal is to leverage my development background to build better automation and contribute to a culture of seamless, continuous delivery.",
+  "Hello! I'm Vansh Sharma, a DevOps enthusiast with a background in full-stack development. My journey began building client applications with the MERN stack, but I quickly discovered my passion for the architecture that underpins a seamless software lifecycle, from code commit to a secure, monitored, live deployment.\n\nThis passion drove me to master modern, cloud-native tools. I have hands-on experience designing CI/CD pipelines with **GitHub Actions**, containerizing applications with **Docker**, and orchestrating them with **Kubernetes**. I build and manage infrastructure as code using **Terraform** and have implemented comprehensive monitoring stacks with **Prometheus** and **Grafana**.\n\nMy development background gives me a unique perspective, allowing me to bridge the gap between development and operations effectively. I am particularly interested in DevSecOps and am always integrating security best practices, like vulnerability scanning, directly into my automated workflows.",
 
   avatarUrl: "/me.png",
   skills: [
     "Docker",
+    "Kubernetes",
     "GitHub Actions",
+    "Prometheus",
+    "Grafana",
     "Terraform",
     "AWS",
+    "Nginx",
     "Linux",
     "Git",
     "Shell Scripting",
@@ -78,33 +82,35 @@ summary:
     },
   ],
  projects: [
-    {
-      title: "Automated CI/CD Pipeline for This Portfolio",
-      href: "https://github.com/ShenLongVansh/portfolio",
-      dates: "Sepetember 2025", 
-      active: true,
-      description: "Designed and implemented a zero-touch CI/CD pipeline for this Next.js portfolio. The pipeline, defined via GitHub Actions, triggers on push to GitHub, builds a multi-stage Docker image, and deploys the container automatically to a DigitalOcean droplet, exposing the site on port 80.",
-      technologies: [
-        "Docker",
-        "Git",
-        "GitHub Actions",
-        "Linux",
-        "Digital Ocean",
-        "Next.js",
-        "React",
-      ],
-      links: [
-        {
-          type: "GitHub",
-          href: "https://github.com/ShenLongVansh/portfolio",
-          icon: <Icons.github className="size-3" />, 
-        },
-      ],
-      image: "", // will work using s3 bucket in the future
-      video: "./Automated-Portfolio.webm", // using local for now
-    },
-  ],
-
+  {
+    title: "Automated DevSecOps Pipeline for Portfolio",
+    href: "https://github.com/ShenLongVansh/portfolio",
+    dates: "October 2025",
+    active: true,
+    description:
+      "Designed a full DevSecOps pipeline for this portfolio using GitHub Actions. The workflow includes a container vulnerability scan, builds a Docker image, and deploys to a DigitalOcean Droplet behind an Nginx reverse proxy. The entire stack is monitored in real-time using Prometheus and Grafana.",
+    technologies: [
+      "Docker",
+      "Git",
+      "GitHub Actions",
+      "Prometheus",
+      "Grafana",
+      "Nginx",
+      "Linux",
+      "Digital Ocean",
+      "Next.js",
+    ],
+    links: [
+      {
+        type: "GitHub",
+        href: "https://github.com/ShenLongVansh/portfolio",
+        icon: <Icons.github className="size-3" />,
+      },
+    ],
+    image: "", // will work using s3 bucket in the future
+    video: "./Automated-Portfolio.webm", // using local for now
+  },
+],
   hackathons: [
     {
       title: "Hackathon 2024 - Be a tech geek.",
