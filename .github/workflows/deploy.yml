@@ -31,7 +31,7 @@ jobs:
       - name: Deploy on DigitalOcean Droplet
         uses: appleboy/ssh-action@v1
         env:
-          HTPASSWD_SECRET: ${{ secrets.HTPASSWD_FILE }}
+          HTPASSWD_SECRET: ${{ secrets.HTPASSWD_SECRET }}
         with:
           host: ${{ secrets.DO_SSH_HOST }}
           username: ${{ secrets.DO_SSH_USER }}
