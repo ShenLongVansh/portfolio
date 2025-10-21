@@ -108,7 +108,7 @@ summary:
       },
     ],
     image: "", // will work using s3 bucket in the future
-    video: "./Automated-Portfolio.webm", // using local for now
+    video: "./Automated_Project_with_Monitoring.webm", // using local for now
   },
 ],
   hackathons: [
