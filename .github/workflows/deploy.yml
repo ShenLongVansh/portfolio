@@ -42,10 +42,11 @@ jobs:
 
 
 
-            # Create the .htpasswd file from the GitHub Secret. Utilizing base64 to allow the $ to parse without any hiccups.
-            echo ${{ secrets.HASHED_SECRET_TRYING }} > .hash
+            # Used base64 method because the special characters weren't parsing into the .htpasswd file thus resulting in errors 
+
+            echo ${{ secrets.HTPASSWD_SECRET_HASH }} > .hash
             base64 --decode .hash > .htpasswd
-            cat .htpasswd
+            rm .hash
 
             # to remove obsoluete service messing with the droplet
             docker-compose down
