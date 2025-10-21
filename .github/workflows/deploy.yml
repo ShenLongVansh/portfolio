@@ -1,59 +1,3 @@
-# name: Deploy Portfolio to DigitalOcean
-
-# on:
-#   push:
-#     branches: [ "main" ]
-
-# jobs:
-#   deploy:
-#     runs-on: ubuntu-latest
-
-#     steps:
-#       # 1️⃣ Checkout repository
-#       - name: Checkout repository
-#         uses: actions/checkout@v3
-
-#       # 2️⃣ Docker login
-#       - name: Docker login
-#         uses: docker/login-action@v2
-#         with:
-#           username: ${{ secrets.DOCKERHUB_USERNAME }}
-#           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-
-#       # 3️⃣ Build & push portfolio image
-#       - name: Build & push portfolio image
-#         run: |
-#           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/portfolio:latest .
-#           docker push ${{ secrets.DOCKERHUB_USERNAME }}/portfolio:latest
-
-#       # 4️⃣ SSH into droplet and deploy
-#       - name: Deploy on DigitalOcean Droplet
-#         uses: appleboy/ssh-action@v1
-#         with:
-#           host: ${{ secrets.DO_SSH_HOST }}
-#           username: ${{ secrets.DO_SSH_USER }}
-#           key: ${{ secrets.DO_SSH_PRIVATE_KEY }}
-#           port: 22
-#           script: |
-#             # --- Stop & remove existing containers ---
-#             docker stop portfolio datadog-agent || true
-#             docker rm portfolio datadog-agent || true
-#             docker rmi portfolio
-
-#             # --- Start Datadog agent first ---
-#             docker run -d --name datadog-agent \
-#               -e DD_API_KEY="${{ secrets.DATADOG_API_KEY }}" \
-#               -e DD_SITE="us5.datadoghq.com" \
-#               -e DD_LOGS_ENABLED=true \
-#               -v /var/run/docker.sock:/var/run/docker.sock:ro \
-#               -v /var/lib/docker/containers:/var/lib/docker/containers:ro \
-#               datadog/agent:latest
-
-#             # --- Then start portfolio container ---
-#             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/portfolio:latest
-#             docker run -d -p 80:3000 --name portfolio ${{ secrets.DOCKERHUB_USERNAME }}/portfolio:latest
-
-
 name: Deploy Portfolio to DigitalOcean
 
 on:
@@ -99,3 +43,5 @@ jobs:
             docker-compose down
             # This brings up the new, clean environment
             docker-compose up -d
+            # now remove the obsoluete images consuming the droplet's storage
+            docker image prune -f
