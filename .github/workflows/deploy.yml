@@ -42,13 +42,13 @@ jobs:
             git pull origin main
             docker-compose pull app
 
-            echo "--- DEBUGGING SECRET ---"
-            echo "Length of secret:"
-            printf '%s' "$HTPASSWD_SECRET" | wc -c
-            echo "------------------------"
+
 
             # Create the .htpasswd file from the GitHub Secret. Utilizing base64 to allow the $ to parse without any hiccups.
-            printf '%s' "$HTPASSWD_SECRET" | base64 --decode > .htpasswd
+            # printf '%s' "$HTPASSWD_SECRET" | base64 --decode > .htpasswd
+            echo "$HTPASSWD_SECRET" > .temp-hash
+            cat .temp-hash > .htpasswd
+            rm .temp-hash
 
             # to remove obsoluete service messing with the droplet
             docker-compose down
