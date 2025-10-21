@@ -30,3 +30,6 @@ Thumbs.db
 # Misc
 coverage/
 dist/
+
+# htpasswd
+.htpasswd

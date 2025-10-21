@@ -39,6 +39,8 @@ jobs:
             cd /root/portfolio
             git pull origin main
             docker-compose pull app
+            # Create the .htpasswd file from the GitHub Secret
+            echo "${{ secrets.HTPASSWD_FILE }}" > .htpasswd
             # to remove obsoluete service messing with the droplet
             docker-compose down
             # This brings up the new, clean environment
