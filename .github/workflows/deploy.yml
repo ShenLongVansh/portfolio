@@ -30,8 +30,6 @@ jobs:
       # 4️⃣ SSH into droplet and deploy 
       - name: Deploy on DigitalOcean Droplet
         uses: appleboy/ssh-action@v1
-        env:
-          HTPASSWD_SECRET: ${{ secrets.HTPASSWD_SECRET }}
         with:
           host: ${{ secrets.DO_SSH_HOST }}
           username: ${{ secrets.DO_SSH_USER }}
@@ -45,10 +43,9 @@ jobs:
 
 
             # Create the .htpasswd file from the GitHub Secret. Utilizing base64 to allow the $ to parse without any hiccups.
-            # printf '%s' "$HTPASSWD_SECRET" | base64 --decode > .htpasswd
-            echo "$HTPASSWD_SECRET" > .temp-hash
-            cat .temp-hash > .htpasswd
-            rm .temp-hash
+            echo ${{ secrets.HASHED_SECRET_TRYING }} > .hash
+            base64 --decode .hash > .htpasswd
+            cat .htpasswd
 
             # to remove obsoluete service messing with the droplet
             docker-compose down
