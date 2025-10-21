@@ -54,7 +54,7 @@ npm run dev
 This repository contains the source code for my personal portfolio, but its primary purpose is to serve as a live, production-grade demonstration of a complete DevOps lifecycle.
 
 **Live Portfolio URL:** [Click](https://portfolio-five-lemon-yoqaqn1pf0.vercel.app/)  
-**Live Grafana Dashboard:** [Click](https://portfolio-five-lemon-yoqaqn1pf0.vercel.app:3001) (Secure login required)
+**Live Grafana Dashboard:** [Click](#) (Currently working on a way to let others have secure access without any malicious risk.)
 
 ---
 
