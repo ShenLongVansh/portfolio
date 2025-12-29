@@ -1,0 +1,56 @@
+name: Deploy Portfolio to DigitalOcean
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # 1️⃣ Checkout repository 
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2️⃣ Docker login
+      - name: Docker login
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+      # 3️⃣ Build & push portfolio image 
+      - name: Build & push portfolio image
+        run: |
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/portfolio:latest .
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/portfolio:latest
+
+      # 4️⃣ SSH into droplet and deploy 
+      - name: Deploy on DigitalOcean Droplet
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.DO_SSH_HOST }}
+          username: ${{ secrets.DO_SSH_USER }}
+          key: ${{ secrets.DO_SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            cd /root/portfolio
+            git pull origin main
+            docker-compose pull app
+
+
+
+            # Used base64 method because the special characters weren't parsing into the .htpasswd file thus resulting in errors 
+
+            echo ${{ secrets.HTPASSWD_SECRET_HASH }} > .hash
+            base64 --decode .hash > .htpasswd
+            rm .hash
+
+            # to remove obsoluete service messing with the droplet
+            docker-compose down
+            # This brings up the new, clean environment
+            docker-compose up -d
+            # now remove the obsoluete images consuming the droplet's storage
+            docker image prune -f

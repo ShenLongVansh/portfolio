@@ -1,0 +1,11 @@
+# prometheus.yml
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'portfolio-app'
+    metrics_path: /api/metrics
+    static_configs:
+      # 'app:3000' works because Docker Compose creates a network
+      # where services can be reached by their name ('app').
+      - targets: ['app:3000']
