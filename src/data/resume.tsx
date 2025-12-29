@@ -110,12 +110,12 @@ export const DATA = {
       links: [
         {
           type: "GitHub",
-          href: "#",
+          href: "https://github.com/ShenLongVansh/Deepfake-CI-CD",
           icon: <Icons.github className="size-3" />,
         },
       ],
       image: "", // will work using s3 bucket in the future
-      video: "./", // using local for now
+      video: "./deepfake.mp4", // using local for now
     },
 
     {
