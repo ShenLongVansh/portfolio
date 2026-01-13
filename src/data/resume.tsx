@@ -16,12 +16,11 @@ export const DATA = {
   avatarUrl: "/me.png",
   skills: [
     "Docker",
-    "Kubernetes",
     "GitHub Actions",
     "Prometheus",
     "Grafana",
     "Terraform",
-    "AWS",
+    "Azure",
     "Nginx",
     "Linux",
     "Git",
@@ -65,6 +64,19 @@ export const DATA = {
 
   work: [
 
+    {
+      company: "VyntraPro Innovations",
+      href: "https://webspidersolutions.com/",
+      badges: ["Intern"],
+      location: "Gurugram",
+      title: "DevOps Engineer",
+      logoUrl: "/vyntra.png",
+      start: "Jan 2026",
+      end: "Present",
+      description:
+        "Migrated an on-premises backend application to an Azure Virtual Machine, ensuring stable deployment and service continuity. Automated application startup and monitoring using systemd on Linux, while configuring and managing Linux server environments for backend workloads. Contributed to improving deployment reliability and operational stability by working closely with backend and infrastructure components in a production-like environment.",
+    },
+    
     {
       company: "Web Spider Solutions",
       href: "https://webspidersolutions.com/",
